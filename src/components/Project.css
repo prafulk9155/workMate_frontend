@@ -1,0 +1,45 @@
+.project-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .project-name {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .node {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .node-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .task {
+    margin-left: 20px;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .task-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .subtask {
+    margin-left: 20px;
+    color: #666;
+  }
+  
+  .subtask-label {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  

@@ -1,0 +1,20 @@
+/* styles.css */
+
+.pie-charts-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .pie-chart {
+    width: 30%;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .separator {
+    font-size: 24px;
+    color: #333;
+  }
+  

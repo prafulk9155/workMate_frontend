@@ -1,0 +1,39 @@
+.kanban-board {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .column {
+    width: 30%;
+    min-height: 300px;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .to-do {
+    background-color: #FF6347; /* Red for To Do */
+  }
+  
+  .in-progress {
+    background-color: #FFFF00; /* Yellow for In Progress */
+  }
+  
+  .done {
+    background-color: #32CD32; /* Green for Done */
+  }
+  
+  .task {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+  }
+  
+  .task:hover {
+    background-color: #f5f5f5;
+  }
+  
