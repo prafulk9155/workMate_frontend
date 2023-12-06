@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -15,14 +18,27 @@ const SignupForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can perform signup logic here, like making an API call
-    console.log(formData); // For demonstration purposes, log the form data
+
+    try {
+      const response = await axios.post('/api/addUser', formData);
+    
+      if (response.status === 200) {
+        toast.success('Signup successful!');
+      }
+    } catch (error) {
+      // Log the detailed error for debugging
+      console.error('Error:', error);
+    
+      // Display a user-friendly error message
+      toast.error('Failed to sign up. Please try again.');
+    }
   };
 
   return (
-    <div className="container-fluid vh-100 d-flex justify-content-center align-items-center bg-primary">
+    <div className="container-fluid vh-10 d-flex justify-content-center align-items-center project-container">
+      <ToastContainer /> {/* To display Toast notifications */}
       <div className="card p-4">
         <h2 className="card-title text-center mb-4">Sign Up</h2>
         <form onSubmit={handleSubmit}>

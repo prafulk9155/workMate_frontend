@@ -56,3 +56,19 @@
 .node-label:hover {
   background-color: #f0f0f0;
 }
+
+
+.nav {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.nav-button {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #ffffff;
+  margin: 1rem;
+  margin-right: 1rem;
+  font:10px; /* Set the color as per your design */
+}
