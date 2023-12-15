@@ -2,42 +2,77 @@ import React, { useState } from 'react';
 import './Project.css'; // Import your CSS file for styling
 
 const Project = () => {
+  const [projectName, setProjectName] = useState('');
   const [nodes, setNodes] = useState([]);
 
-  const addNode = () => {
-    setNodes([...nodes, { tasks: [] }]);
+  const addNode = (nodeName) => {
+    setNodes([...nodes, { nodeName, tasks: [] }]);
   };
 
-  const addTask = (nodeIndex) => {
+  const addTask = (nodeIndex, taskName) => {
     const updatedNodes = [...nodes];
-    updatedNodes[nodeIndex].tasks.push({ subtasks: [] });
+    updatedNodes[nodeIndex].tasks.push({ taskName, subtasks: [] });
     setNodes(updatedNodes);
   };
 
-  const addSubTask = (nodeIndex, taskIndex) => {
+  const addSubTask = (nodeIndex, taskIndex, subtaskName) => {
     const updatedNodes = [...nodes];
-    updatedNodes[nodeIndex].tasks[taskIndex].subtasks.push({});
+    updatedNodes[nodeIndex].tasks[taskIndex].subtasks.push({ subtaskName });
     setNodes(updatedNodes);
   };
-
-  // Function to handle date assignment, user assignment, etc.
 
   return (
     <div className="project-container">
-      <h1 className="project-name">Project Name</h1>
-      <button onClick={addNode}>Add Node</button>
+      <h1
+        className="project-name"
+        onClick={() => {
+          const enteredName = prompt('Enter Project name:');
+          if (enteredName) {
+            setProjectName(enteredName);
+          }
+        }}
+      >
+        {projectName || 'Project Name'}
+      </h1>
+      <button
+        onClick={() => {
+          const nodeName = prompt('Enter node name:');
+          if (nodeName) {
+            addNode(nodeName);
+          }
+        }}
+      >
+        Add Node
+      </button>
       {nodes.map((node, nodeIndex) => (
         <div key={nodeIndex} className="node">
-          <h2 className="node-label">Node {nodeIndex + 1}</h2>
-          <button onClick={() => addTask(nodeIndex)}>Add Task</button>
+          <h2 className="node-label">{node.nodeName}</h2>
+          <button
+            onClick={() => {
+              const taskName = prompt('Enter task name:');
+              if (taskName) {
+                addTask(nodeIndex, taskName);
+              }
+            }}
+          >
+            Add Task
+          </button>
           {node.tasks.map((task, taskIndex) => (
             <div key={taskIndex} className="task">
-              <h3 className="task-label">Task {taskIndex + 1}</h3>
-              <button onClick={() => addSubTask(nodeIndex, taskIndex)}>Add Subtask</button>
+              <h3 className="task-label">{task.taskName}</h3>
+              <button
+                onClick={() => {
+                  const subtaskName = prompt('Enter subtask name:');
+                  if (subtaskName) {
+                    addSubTask(nodeIndex, taskIndex, subtaskName);
+                  }
+                }}
+              >
+                Add Subtask
+              </button>
               {task.subtasks.map((subtask, subtaskIndex) => (
                 <div key={subtaskIndex} className="subtask">
-                  <p className="subtask-label">Subtask {subtaskIndex + 1}</p>
-                  {/* UI for assigning users and dates */}
+                  <p className="subtask-label">{subtask.subtaskName}</p>
                 </div>
               ))}
             </div>
